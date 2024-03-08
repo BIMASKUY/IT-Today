@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <style>
+        .user-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .user-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .user-details {
+            font-size: 18px;
+        }
+        .btn {
+            padding: 5px 10px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .btn-detail {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detail <%= result[0].nama %></h1>
+    <div class="user-card">
+
+        <% 
+            let source;
+            if(result[0].url_foto) source = `/img/${result[0].url_foto}`;
+            else source = "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/user-profile-icon.png"; 
+        %>
+
+        <img src="<%= source %>" alt="User Picture">
+        <div class="user-details">
+            <p>Name: <%= result[0].nama %></p>
+            <p>Age: <%= result[0].usia %></p>
+            <p> <a href="/delete/<%= result[0].nama %>" class="btn btn-detail" style="text-decoration: none;">Delete</a> </p>
+        </div>
+    </div>
+    <!-- Add more user cards as needed -->
+</body>
+</html>
